@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>몬스터 잡기 게임</title>
+</head>
+<body>
+  <h1>몬스터 잡기 게임</h1>
+  <input placeholder="몬스터의 HP를 입력하세요" id="monster-hp" />
+  <input placeholder="한 번에 입히는 데미지를 입력하세요" id="attack-damage" />
+  <button id="start-button">공격 시작!</button>
+
+  <div id="result-container"></div>
+
+  <script>
+    const button = document.getElementById("start-button");
+    const container = document.getElementById("result-container");
+
+    button.addEventListener("click", function () {
+      container.innerHTML = ""; // 이전 결과 지우기
+
+      let monsterHP = parseInt(document.getElementById("monster-hp").value);
+      const attackDamage = parseInt(document.getElementById("attack-damage").value);
+
+      if (isNaN(monsterHP) || isNaN(attackDamage)) {
+        alert("데미지를 잘못 입력하여 게임을 취소합니다!");
+        return;
+      }
+
+      let attackCount = 0;
+
+      while (monsterHP > 0) {
+        monsterHP -= attackDamage; // HP 감소
+        attackCount += 1;          // 공격 횟수 증가
+
+        const p = document.createElement("p");
+        p.textContent = `몬스터를 ${attackCount}회 공격했다!`;
+        container.append(p);
+
+        // 만약에 HP가 0보다 작아질 경우, HP에 0을 대입한다!
+        if (monsterHP < 0) {
+          monsterHP = 0;
+        }
+
+        const strong = document.createElement("strong");
+        strong.textContent = `몬스터의 남은 HP는 ${monsterHP}입니다!`;
+        container.append(strong);
+      }
+
+      const h2 = document.createElement("h2");
+      h2.textContent = "몬스터 잡기 완료! 수고하셨습니다~!";
+      h2.style.color = "orange";
+      h2.title = "게임을 다시 시작하고 싶으면 새로고침하세요";
+      container.appendChild(h2);
+    });
+  </script>
+</body>
+</html>
