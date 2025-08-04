@@ -1,0 +1,29 @@
+body {
+  background-color: #eaeaea;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode .container {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1;
+}
+
+.dark-mode .form-control {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+.dark-mode .btn-primary {
+  background-color: #444;
+  border-color: #444;
+}
+
+.toggle-btn {
+  margin-bottom: 1rem;
+}
